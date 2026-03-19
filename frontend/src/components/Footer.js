@@ -1,5 +1,3 @@
-import { Shield } from 'lucide-react';
-
 const footerLinks = {
   Produit: ['Securipass', 'Application Mobile', 'Sécurité', 'Tarifs'],
   Ressources: ['Guide d\'utilisation', 'FAQ', 'Support', 'Documentation'],
@@ -17,12 +15,11 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="#accueil" className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 bg-[#E30613] rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" strokeWidth={2.5} />
-              </div>
-              <span className="font-extrabold text-white text-base tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                Société Générale
-              </span>
+              <img
+                src="https://customer-assets.emergentagent.com/job_code-web-dev/artifacts/67secxw0_IMG_0348.png"
+                alt="Société Générale"
+                className="h-10 w-auto"
+              />
             </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               Votre solution d'authentification forte pour des transactions bancaires sécurisées.

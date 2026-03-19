@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, X, Info, ArrowLeft, User, Lock, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { X, Info, ArrowLeft, User, Lock, CheckCircle2, AlertTriangle } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -322,12 +322,11 @@ export default function RegisterFlow() {
             Retour
           </button>
           <a href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-[#E30613] rounded-md flex items-center justify-center">
-              <Shield className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="font-extrabold text-[#0A0A0A] text-sm tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
-              Société Générale
-            </span>
+            <img
+              src="https://customer-assets.emergentagent.com/job_code-web-dev/artifacts/67secxw0_IMG_0348.png"
+              alt="Société Générale"
+              className="h-8 w-auto"
+            />
           </a>
           <div className="w-16" />
         </div>

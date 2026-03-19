@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shield, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Accueil', href: '#accueil' },
@@ -33,12 +33,11 @@ export const Navbar = () => {
             data-testid="navbar-logo"
             className="flex items-center gap-2.5 group"
           >
-            <div className="w-9 h-9 bg-[#E30613] rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
-              <Shield className="w-5 h-5 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="font-extrabold text-[#0A0A0A] text-base tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
-              Société Générale
-            </span>
+            <img
+              src="https://customer-assets.emergentagent.com/job_code-web-dev/artifacts/67secxw0_IMG_0348.png"
+              alt="Société Générale"
+              className="h-10 w-auto transition-transform group-hover:scale-105"
+            />
           </a>
 
           {/* Desktop Nav */}

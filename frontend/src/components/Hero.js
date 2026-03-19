@@ -114,10 +114,11 @@ export const Hero = () => {
                   <div className="bg-white rounded-[2rem] overflow-hidden aspect-[9/16] flex flex-col">
                     <div className="h-12 bg-[#E30613] flex items-center justify-center">
                       <div className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-4 h-4 text-white" />
-                        <span className="text-white text-xs font-bold tracking-wide" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                          SOCIÉTÉ GÉNÉRALE
-                        </span>
+                        <img
+                          src="https://customer-assets.emergentagent.com/job_code-web-dev/artifacts/67secxw0_IMG_0348.png"
+                          alt="Société Générale"
+                          className="h-6 w-auto brightness-0 invert"
+                        />
                       </div>
                     </div>
                     {/* Security update notification mockup */}
