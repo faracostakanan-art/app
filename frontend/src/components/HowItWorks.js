@@ -81,7 +81,7 @@ export const HowItWorks = () => {
             </p>
             <div className="reveal animate-fade-up animate-delay-300 mt-8">
               <a
-                href="#accueil"
+                href="/register"
                 data-testid="how-it-works-cta"
                 className="btn-primary"
               >

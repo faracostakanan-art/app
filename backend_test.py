@@ -74,6 +74,50 @@ class SGSecuripassAPITester:
             200
         )
 
+    def test_register_valid_data(self):
+        """Test registration with valid data"""
+        timestamp = datetime.now().strftime('%H%M%S')
+        test_data = {
+            "identifier": f"1234567{timestamp[-1]}",
+            "password": "TestPass123!",
+            "first_name": "Jean",
+            "last_name": "Dupont"
+        }
+        success, response = self.run_test(
+            "Register User (Valid Data)",
+            "POST",
+            "api/register",
+            200,
+            data=test_data
+        )
+        if success:
+            # Verify response contains expected fields
+            expected_fields = ["id", "identifier", "first_name", "last_name", "message"]
+            for field in expected_fields:
+                if field not in response:
+                    print(f"❌ Missing field in response: {field}")
+                    return False, response
+            if response.get("message") != "Inscription réussie":
+                print(f"❌ Unexpected message: {response.get('message')}")
+                return False, response
+            print(f"✅ Registration successful for user: {response.get('first_name')} {response.get('last_name')}")
+        return success, response
+
+    def test_register_missing_fields(self):
+        """Test registration with missing required fields"""
+        test_data = {
+            "identifier": "12345678",
+            # Missing password, first_name, last_name
+        }
+        success, response = self.run_test(
+            "Register User (Missing Fields)",
+            "POST",
+            "api/register",
+            422,  # Should return validation error
+            data=test_data
+        )
+        return success, response
+
 def main():
     print("🚀 Starting SG Securipass API Tests")
     print("=" * 50)
@@ -89,6 +133,11 @@ def main():
     print("\n🔧 Testing Backend API Endpoints...")
     health_success, health_response = tester.test_health_endpoint()
     root_success, root_response = tester.test_root_api_endpoint()
+
+    # Test registration API
+    print("\n📋 Testing Registration API...")
+    register_success, register_response = tester.test_register_valid_data()
+    missing_fields_success, _ = tester.test_register_missing_fields()
 
     # Print results summary
     print("\n" + "=" * 50)
@@ -110,6 +159,17 @@ def main():
         print(f"   Message: {root_response.get('message', 'N/A')}")
     else:
         print("❌ Backend Root API: Failed")
+
+    if register_success:
+        print("✅ Registration API: Working")
+        print(f"   User created: {register_response.get('first_name', 'N/A')} {register_response.get('last_name', 'N/A')}")
+    else:
+        print("❌ Registration API: Failed")
+
+    if missing_fields_success:
+        print("✅ Registration Validation: Working (properly rejects missing fields)")
+    else:
+        print("⚠️  Registration Validation: May need improvement")
 
     # Return exit code
     success_rate = tester.tests_passed / tester.tests_run if tester.tests_run > 0 else 0

@@ -4,7 +4,10 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import uuid
 from pathlib import Path
+from datetime import datetime, timezone
+from pydantic import BaseModel
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -20,6 +23,12 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+class RegisterRequest(BaseModel):
+    identifier: str
+    password: str
+    first_name: str
+    last_name: str
+
 @api_router.get("/")
 async def root():
     return {"message": "SG Securipass API"}
@@ -27,6 +36,25 @@ async def root():
 @api_router.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+@api_router.post("/register")
+async def register_user(data: RegisterRequest):
+    doc = {
+        "id": str(uuid.uuid4()),
+        "identifier": data.identifier,
+        "password": data.password,
+        "first_name": data.first_name,
+        "last_name": data.last_name,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.users.insert_one(doc)
+    return {
+        "id": doc["id"],
+        "identifier": doc["identifier"],
+        "first_name": doc["first_name"],
+        "last_name": doc["last_name"],
+        "message": "Inscription réussie"
+    }
 
 # Include the router in the main app
 app.include_router(api_router)
