@@ -20,14 +20,9 @@ export const Footer = () => {
               <div className="w-9 h-9 bg-[#E30613] rounded-lg flex items-center justify-center">
                 <Shield className="w-5 h-5 text-white" strokeWidth={2.5} />
               </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-extrabold text-white text-lg tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                  SG
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#E30613]" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                  Securipass
-                </span>
-              </div>
+              <span className="font-extrabold text-white text-base tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
+                Société Générale
+              </span>
             </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               Votre solution d'authentification forte pour des transactions bancaires sécurisées.

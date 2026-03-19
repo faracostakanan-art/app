@@ -4,7 +4,6 @@ import { Shield, Menu, X } from 'lucide-react';
 const navLinks = [
   { label: 'Accueil', href: '#accueil' },
   { label: 'Fonctionnalités', href: '#fonctionnalites' },
-  { label: 'Comment ça marche', href: '#comment-ca-marche' },
 ];
 
 export const Navbar = () => {
@@ -37,14 +36,9 @@ export const Navbar = () => {
             <div className="w-9 h-9 bg-[#E30613] rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
               <Shield className="w-5 h-5 text-white" strokeWidth={2.5} />
             </div>
-            <div className="flex flex-col leading-none">
-              <span className="font-extrabold text-[#0A0A0A] text-lg tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                SG
-              </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#E30613]" style={{ fontFamily: 'Chivo, sans-serif' }}>
-                Securipass
-              </span>
-            </div>
+            <span className="font-extrabold text-[#0A0A0A] text-base tracking-tight" style={{ fontFamily: 'Chivo, sans-serif' }}>
+              Société Générale
+            </span>
           </a>
 
           {/* Desktop Nav */}
@@ -60,11 +54,11 @@ export const Navbar = () => {
               </a>
             ))}
             <a
-              href="#fonctionnalites"
+              href="/register"
               data-testid="nav-cta-button"
               className="btn-primary text-sm !py-2.5 !px-6"
             >
-              Découvrir
+              Mettre à jour
             </a>
           </div>
 
@@ -97,12 +91,12 @@ export const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#fonctionnalites"
+                href="/register"
                 data-testid="mobile-cta-button"
                 className="btn-primary mt-3 text-sm text-center"
                 onClick={() => setMobileOpen(false)}
               >
-                Découvrir
+                Mettre à jour
               </a>
             </div>
           </div>
